@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+
+////////////// helper class in making under-five graphs to auto generate//// not completed though
+
 public class MyHelper extends SQLiteOpenHelper {
     private Context con;
     public MyHelper(Context context) {

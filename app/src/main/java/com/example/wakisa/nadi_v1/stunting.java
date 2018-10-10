@@ -29,9 +29,6 @@ public class stunting extends AppCompatActivity
         setContentView(R.layout.activity_height);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -41,10 +38,7 @@ public class stunting extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        /////////////////////////////////////////////////////
-
         Button b =(Button)findViewById(R.id.hbtn);
-
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1245,6 +1239,22 @@ public class stunting extends AppCompatActivity
             }
             else if (ageM > 12) {
                 alertMonths();
+            }
+            else if (h > 150){
+                Context context;
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setMessage("Sorry, under-five child cannot be "+ h + " cm in height");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton(
+                        "Try again",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
             else {
 

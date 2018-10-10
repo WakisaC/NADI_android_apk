@@ -32,8 +32,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class general extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class general extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     // create objects to access data from other classes
     followUpDatabase myDb;
@@ -43,10 +42,7 @@ public class general extends AppCompatActivity
     ////variables to copy values to next activity//
     String muac_copy,wasting_copy;
     double weight_copy,height_copy;
-
     String weight_, height_, muac_, age_y, age_m;
-
-
     String server_url2 ="http://192.168.0.50/nadi/generalResult.php";
     AlertDialog.Builder builder;
 
@@ -59,8 +55,6 @@ public class general extends AppCompatActivity
         setContentView(R.layout.activity_general);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -83,11 +77,8 @@ public class general extends AppCompatActivity
         //////////////////////////////database code///////////////////////////////
         myDb =new followUpDatabase(this);
 
-
     }
     //////////Method to add data to database///////////
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -104,9 +95,6 @@ public class general extends AppCompatActivity
         getMenuInflater().inflate(R.menu.general, menu);
         return true;
     }
-
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -6893,9 +6881,8 @@ public class general extends AppCompatActivity
 
     }
 
-
-       public void result() {
-
+    public void result() {
+        /// variables to be used when converting string values to integers and double
         int ageY, ageM;
         double w, h, m;
 
@@ -6913,7 +6900,6 @@ public class general extends AppCompatActivity
         age_m = agem.getText().toString();
 
             ////copy weight and height values
-
            weightValue = weight_;
            heightValue = height_;
 
@@ -6926,7 +6912,7 @@ public class general extends AppCompatActivity
         male = (RadioButton) findViewById(R.id.radMale);
         female = (RadioButton) findViewById(R.id.radFemale);
 
-        // validate user input////////
+        /// validate user input////////
 
         if (TextUtils.isEmpty(weight_)) {
             Toast.makeText(this, " Enter Weight value ", Toast.LENGTH_LONG).show();
@@ -6971,6 +6957,58 @@ public class general extends AppCompatActivity
         else if (ageM>12){
             alertMonths();
         }
+        else if (w> 30){
+            Context context;
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Sorry, under-five child cannot be "+ w + " kg");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Try again",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
+        else if (h > 150){
+            Context context;
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Sorry, under-five child cannot be "+ h + " cm in height");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton(
+                    "Try again",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
+        else if (m> 40){
+            Context context;
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Sorry, under-five child cannot have "+ m + " cm Mid Upper Arm Circumference");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Try again",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
 
         else {
 
@@ -6984,10 +7022,9 @@ public class general extends AppCompatActivity
                         String wastingResult =maleWasting(h,w,ageY,ageM);
                         String muacResult    = getMuac(m);
 
-
                         //////Pass the results into general results activity
                       Intent intent = new Intent(this,generalResults.class);
-                    intent.putExtra("oedemaID",oedemaResult);
+                      intent.putExtra("oedemaID",oedemaResult);
                       intent.putExtra("weightID",weightResult);
                       intent.putExtra("heightID",heightResult);
                       intent.putExtra("wastingID",wastingResult);
@@ -6995,17 +7032,12 @@ public class general extends AppCompatActivity
                       intent.putExtra("weightValueID",weightValue);
                       intent.putExtra("heightValueID",heightValue);
                     ////// pass the total age in months only to save to the database
-                    intent.putExtra("monthsTotal",monthsTotal);
+                      intent.putExtra("monthsTotal",monthsTotal);
 
                       ////pass weight and height vaalues directly
                       intent.putExtra("weightDouble",w);
                       intent.putExtra("heightDouble",h);
-
-
-
                       startActivity(intent);
-
-
                 } else if (female.isChecked()) {
 
                     String oedemaResult  ="Negative";
@@ -7013,7 +7045,6 @@ public class general extends AppCompatActivity
                     String heightResult  = maleHeight(h,ageY,ageM);
                     String wastingResult =maleWasting(h,w,ageY,ageM);
                     String muacResult    = getMuac(m);
-
 
                     //////Pass the results into general results activity
                     Intent intent = new Intent(this,generalResults.class);
@@ -7032,8 +7063,6 @@ public class general extends AppCompatActivity
                     intent.putExtra("monthsTotal",monthsTotal);
 
                     startActivity(intent);
-
-
 
                 } else {
                     alertRadioButtonCheck();

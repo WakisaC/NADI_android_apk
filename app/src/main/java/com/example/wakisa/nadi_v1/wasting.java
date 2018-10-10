@@ -4581,6 +4581,40 @@ public class wasting extends AppCompatActivity
             else if (ageM>12){
                 alertMonths();
             }
+            else if (w> 30){
+                Context context;
+
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setMessage("Sorry, under-five child cannot be "+ w + " kg");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Try again",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+            else if (h > 150){
+                Context context;
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setMessage("Sorry, under-five child cannot be "+ h + " cm in height");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton(
+                        "Try again",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
 
             else {
                 if (male.isChecked()) {

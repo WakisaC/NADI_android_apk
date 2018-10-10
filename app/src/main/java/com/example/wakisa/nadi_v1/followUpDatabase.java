@@ -26,7 +26,6 @@ public class   followUpDatabase extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_CHILD +
                 "(_Months integer PRIMARY KEY,"+OEDEMA+ " TEXT, "+ WEIGHT+ " TEXT, " +HEIGHT + " TEXT, " +WASTING+ " TEXT, "+MUAC + " TEXT);");
 
-
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion,

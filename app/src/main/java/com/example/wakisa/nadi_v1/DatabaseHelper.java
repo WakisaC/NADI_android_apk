@@ -1,7 +1,5 @@
 package com.example.wakisa.nadi_v1;
 
-
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -31,8 +29,6 @@ public class   DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+TABLE_NAME +"( ID INTEGER PRIMARY KEY AUTOINCREMENT,BIRTH_CERTIFICATE_NUMBER TEXT,MONTHS INTEGER,WEIGHT DOUBLE,HEIGHT DOUBLE,WASTING TEXT,OEDEMA TEXT,MUAC TEXT)");
-
-
     }
 
     @Override
@@ -57,8 +53,6 @@ public class   DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_6,wasting);
         contentValues.put(COL_7,oedema);
         contentValues.put(COL_8,muac);
-
-
         long result = db.insert(TABLE_NAME,null,contentValues);
 
         if (result==-1)

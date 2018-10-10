@@ -16,15 +16,15 @@
             android:id="@+id/nav_progress"
             android:icon="@drawable/ic_progress"
             android:title="Child Follow up" />
-        <item
-            android:id="@+id/nav_feedback"
-            android:icon="@drawable/ic_feedback"
-            android:title="Feedback" />
+
         <item
             android:id="@+id/nav_notes"
             android:icon="@drawable/ic_note"
             android:title="Notes" />
-
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="Feedback" />
         <item
             android:id="@+id/nav_About"
             android:icon="@drawable/ic_about"

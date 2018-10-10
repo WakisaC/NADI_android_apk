@@ -20,13 +20,10 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    followUpDatabase myDb;
     EditText edoedema,edweight,edheight,edwasting,edmuac;
     Button bt;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +31,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -46,24 +40,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //////////////////////////////database code///////////////////////////////
-        myDb =new followUpDatabase(this);
-
-
-
     }
 
-    //////////Method to add data to database///////////
-    public void onClick(View view){
-        boolean isInserted = myDb.insertData(edoedema.getText().toString(),edweight.getText().toString(),edheight.getText().toString(),edwasting.getText().toString(),edmuac.getText().toString());
-
-        if (isInserted=true){
-            Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
-        }
-
-        else
-            Toast.makeText(MainActivity.this, "OOps!,data not inserted", Toast.LENGTH_LONG).show();
-    }
 
     public  void getStarted(View view){
        general();

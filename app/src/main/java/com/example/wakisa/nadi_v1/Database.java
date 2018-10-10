@@ -61,8 +61,9 @@ public class Database extends AppCompatActivity {
         followButton=(Button)findViewById(R.id.follow);
         profileButton=(Button)findViewById(R.id.profile);
 
-     //uploadToServer();
-     send();
+     uploadToServer(); // function for testing on a cloud server
+
+     //send();   // function for testing on localhost
       viewData();
 
     }
@@ -156,9 +157,6 @@ public class Database extends AppCompatActivity {
 
     }
     public void getFromSQLite( final String bcn,final String months,final String weight,final String height,final String wasting,final String oedema,final String muac){
-
-
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, server_ur2,
                 new Response.Listener<String>() {
                     @Override
@@ -168,8 +166,6 @@ public class Database extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
-
 
             }
         }) {
@@ -190,8 +186,6 @@ public class Database extends AppCompatActivity {
             }
         };
         Mysingleton.getmInstance(Database.this).addToRequestque(stringRequest);
-
-
     }
 
     ///////send data to mysql server on local host//////////
@@ -201,21 +195,15 @@ public class Database extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     final Cursor res = myDb.getAllData();
-
                     //we are connected to a network
                     while ( res.moveToNext()) {
                         getFromSQLite(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getString(6),res.getString(7));
-
                         //////delete data upon uploading////
                         myDb.deleteCreateTable(myDb.TABLE_NAME);
                     }
                 }
             });
-
-
-
-
-                }
+     }
     public void viewData(){
         viewData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,11 +240,8 @@ public class Database extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-
             }
         });
         builder.show();
     }
-
-   
 }

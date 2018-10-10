@@ -30,8 +30,6 @@ import java.util.Map;
 
 public class generalResults extends AppCompatActivity {
 
-    ///create a database class object/////////////
-
 
     EditText edoedema,edweight,edheight,edwasting,edmuac,ID,BCN;
     String server_url ="http://192.168.43.57/nadi/login.php";
@@ -41,9 +39,6 @@ public class generalResults extends AppCompatActivity {
     double height,weight;
     String v0,v1,v2,v3,v4,v5,v6,v7,bcn;
     EditText childId;
-
-    ////textviews///////
-
 
  //////// SQLITE  Variables//////////
     DatabaseHelper myDb;
@@ -70,11 +65,10 @@ public class generalResults extends AppCompatActivity {
         myDb = new DatabaseHelper(this);
         saveBut=(Button)findViewById(R.id.savedata);
 
-        //////////////////////////////////////////////////////
-
+        /// display assessment results/////
        displayResults();
 
-        /////add data to SQLITE///////////
+        /////add data to local phone database using SQLITE///////////
         saveBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,8 +76,6 @@ public class generalResults extends AppCompatActivity {
 
             }
         });
-
-
 
 }
     public void displayResults(){
@@ -119,7 +111,6 @@ public class generalResults extends AppCompatActivity {
     view2.setText(v2);
     view3.setText(v3);
     view4.setText(v4);
-        
 
 }
 
@@ -141,7 +132,6 @@ public class generalResults extends AppCompatActivity {
     v4= i.getStringExtra("muacID");
     v5= i.getStringExtra("weightValueID");
     v6= i.getStringExtra("heightValueID");
-
     v7= i.getStringExtra("monthsTotal"); ///////////total age in months only
 
         ///////////Convert the string values to integer and double respectively to be used in the addData function

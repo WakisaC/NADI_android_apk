@@ -118,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:text="No"
                         android:textColor="@color/colorPrimary"
+                        android:checked="true"
                         android:textSize="20sp"
                         />
                 </RadioGroup>
